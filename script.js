@@ -103,7 +103,7 @@ function documentLoader() {
   documentLoader();
   statsLoader();
   
- /*// Event listener for sel1 change
+// Event listener for sel1 change
   function selectHand(event) {
   var visible_mary = document.getElementsByClassName('#MWS');
   var visible_percy = document.getElementsByClassName('#PBS');
@@ -136,7 +136,7 @@ function documentLoader() {
             element.style.color='yellow';
         });
     }
-  }*/
+  }
 
 // write another function that will toggle the display of the deletions by clicking on a button
 // Function to toggle the display of deletions
