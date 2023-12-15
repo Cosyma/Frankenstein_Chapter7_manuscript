@@ -31,16 +31,20 @@
                 </xsl:choose>
             </xsl:for-each> 
         </div>
-        <div class="col-9">
+        <div class="col-9"> 
             <div class="transcription">
                 <xsl:apply-templates select="//tei:div"/>
             </div>
         </div>
-        </div> 
+        </div>    
     </xsl:template>
     
     <xsl:template match="tei:div">
         <div class="#MWS"><xsl:apply-templates/></div>
+    </xsl:template>
+    
+    <xsl:template match="tei:div">
+        <div class="#PBS"><xsl:apply-templates/></div>
     </xsl:template>
     
     <xsl:template match="tei:p">
@@ -56,6 +60,15 @@
         <span class="marginAdd">
             <xsl:apply-templates/>
         </span>
+    </xsl:template>
+    
+    <xsl:template match="tei:del">
+        <del>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@type"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </del>
     </xsl:template>
     
     <xsl:template match="tei:del">
@@ -82,13 +95,13 @@
         </span>
     </xsl:template>
     
-    <xsl:template match="tei:del[@type ='crossedOut']">
+
+    <!-- add additional templates below, for example to transform the--> 
+    <!--<xsl:template match="tei:del[@type ='crossedOut']">
         <span style="text-decoration-line: line-through;">
             <xsl:apply-templates/>
         </span>
-    </xsl:template>
-    <!-- add additional templates below, for example to transform the--> 
-
+    </xsl:template> -->
     <!--tei:lb in <br/> empty elements,-->
     <xsl:template match="tei:l">
         <span style="

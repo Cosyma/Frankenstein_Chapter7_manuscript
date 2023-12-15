@@ -46,7 +46,6 @@ var mirador = Mirador.viewer({
   } */
 });
 
-
 // function to transform the text encoded in TEI with the xsl stylesheet "Frankenstein_text.xsl", 
 // this will apply the templates and output the text in the html <div id="text">
 function documentLoader() {
@@ -75,7 +74,7 @@ function documentLoader() {
   
 // function to transform the metadate encoded in teiHeader with the xsl stylesheet "Frankenstein_meta.xsl", 
 // this will apply the templates and output the text in the html <div id="stats">
-  function statsLoader() {
+function statsLoader() {
 
     Promise.all([
       fetch(folio_xml).then(response => response.text()),
@@ -141,7 +140,7 @@ function documentLoader() {
 
 // write another function that will toggle the display of the deletions by clicking on a button
 // Function to toggle the display of deletions
-
+/* [not applying]
 // Add a global variable to track the visibility state of deletions
 let deletionsVisible = true;
 
@@ -151,17 +150,70 @@ function toggleDeletions() {
   deletionsVisible = !deletionsVisible;
 
   // Get all deletion elements in the TEI document
-  const deletionElements = document.querySelectorAll('del');
+  const deletionElements = document.querySelectorAll('');
 
   // Loop through each deletion element and toggle its visibility based on the global state
   deletionElements.forEach(deletion => {
     deletion.style.display = deletionsVisible ? 'none' : 'inline'; // Adjust the display property as needed
+  }); 
+}  */
+
+function toggleVisibility() {
+  // Get all elements with the class "del"
+  const dataItems = document.querySelectorAll('del');
+  // Convert the HTMLCollection to an array for forEach compatibility
+  const dataItemsArray = Array.from(dataItems);
+  // Toggle visibility of the numbers
+  dataItemsArray.forEach(item => {
+    item.style.display = item.style.display === 'none' ? '' : 'none';
+  });
+  
+  // Get all elements with the class "del" under the <div class="col-9">
+  const dataItems2 = document.getElementsByClassName('crossedOut');
+  
+  // Convert the HTMLCollection to an array for forEach compatibility
+  const dataItems2Array = Array.from(dataItems2);
+  
+  // Toggle visibility of the numbers under <div class="col-9">
+  dataItems2.forEach(item => {
+    item.style.display = item.style.display === 'none' ? '' : 'none';
   });
 }
 
-  
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, 
 // meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
+
+let readingMode = false;
+
+function toggleReadingText() {
+  const delElements = document.querySelectorAll('del');
+  const addElements = document.querySelectorAll('add');
+
+  if (readingMode) {
+    // Restore original version
+    delElements.forEach(delElement => {
+      delElement.style.display = '';
+    });
+
+    addElements.forEach(addElement => {
+      addElement.style.display = 'superscript';
+    });
+  } else {
+    // Display reading version
+    delElements.forEach(delElement => {
+      delElement.style.display = 'none';
+    });
+
+    addElements.forEach(addElement => {
+      const textNode = document.createTextNode(addElement.textContent);
+      addElement.replaceWith(textNode);
+    });
+  }
+
+  // Toggle reading mode flag
+  readingMode = !readingMode;
+}
+
 
 
 

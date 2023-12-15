@@ -53,7 +53,6 @@
                         <option value="both">Both Hands</option>
                         <option value="Mary">Mary Shelley's Hand Highlighted</option>
                         <option value="Percy">Percy Shelley's Hand Highlighted</option>
-                        <option onclick="toggleDeletions()">Toggle Deletions</option>
                     </select>
                 </div>
             </div>
@@ -63,7 +62,6 @@
  
     <!-- Add a parameter to the template to receive the selected hand -->
     <xsl:param name="selectedHand" />
-    
     <!-- Modify the template to use the selected hand parameter -->
     <xsl:template match="tei:add[@hand='#MWS']|tei:del[@hand='#MWS']">
         <span style="color: red">
@@ -75,7 +73,6 @@
         </span>
         <br/>
     </xsl:template>
-    
     <xsl:template match="tei:add[@hand='#PBS']|tei:del[@hand='#PBS']">
         <span style="color: blue">
             <!-- Use xsl:if to conditionally apply color based on the selected hand -->
