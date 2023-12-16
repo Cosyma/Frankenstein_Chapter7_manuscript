@@ -35,6 +35,7 @@
             <div class="transcription">
                 <xsl:apply-templates select="//tei:div"/>
             </div>
+            
         </div>
         </div>    
     </xsl:template>
@@ -42,11 +43,11 @@
     <xsl:template match="tei:div">
         <div class="#MWS"><xsl:apply-templates/></div>
     </xsl:template>
-    
     <xsl:template match="tei:div">
         <div class="#PBS"><xsl:apply-templates/></div>
     </xsl:template>
     
+ 
     <xsl:template match="tei:p">
         <p style="
             text-indent:10px;
@@ -55,20 +56,28 @@
         </p>
     </xsl:template>
 
-  
     <xsl:template match="tei:add[@place = 'marginleft']">
-        <span class="marginAdd">
+        <span style="
+            display: inline-block; 
+            position: relative;">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
+    <!-- Select all tei:add elements -->
+    <xsl:template match="tei:add">
+        <!-- Your processing for all tei:add elements -->
+        <xsl:apply-templates/>
+    </xsl:template>
+    
+    
     <xsl:template match="tei:del">
-        <del>
-            <xsl:attribute name="class">
-                <xsl:value-of select="@type"/>
-            </xsl:attribute>
-            <xsl:apply-templates/>
-        </del>
+      <del>
+          <xsl:attribute name="class">
+              <xsl:value-of select="@type"/>
+          </xsl:attribute>
+          <xsl:apply-templates/>
+      </del>
     </xsl:template>
     
     <xsl:template match="tei:del">
@@ -80,6 +89,51 @@
         </del>
     </xsl:template>
     
+    <xsl:template match="tei:del">
+        <del>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@rend"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </del>
+    </xsl:template>
+    
+<xsl:template match="tei:add">
+        <add>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@rend"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </add>
+    </xsl:template>
+    
+    <xsl:template match="tei:add">
+        <add>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </add>
+    </xsl:template>
+    
+    <xsl:template match="tei:add">
+        <add>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@type"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </add>
+    </xsl:template>
+    
+    <xsl:template match="tei:add">
+        <add>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@place"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </add>
+    </xsl:template>
+
     <!-- all the supralinear additions are given in a span with the class supraAdd, 
         make sure to put this class in superscript in the CSS file, -->
     <xsl:template match="tei:add[@place = 'supralinear']">
@@ -89,13 +143,12 @@
             bottom: 50%;
             transform: translateY(-40%);            
             font-style: italic;
-            vertical-align: middle;">
-            <!--￥￥￥ 用 inline-block del消失 -->
+            ">
+            <!--￥￥￥ 用 inline-block del消失 vertical-align: middle; -->
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
-
     <!-- add additional templates below, for example to transform the--> 
     <!--<xsl:template match="tei:del[@type ='crossedOut']">
         <span style="text-decoration-line: line-through;">
@@ -103,6 +156,7 @@
         </span>
     </xsl:template> -->
     <!--tei:lb in <br/> empty elements,-->
+    
     <xsl:template match="tei:l">
         <span style="
             display: inline;">

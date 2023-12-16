@@ -36,14 +36,11 @@ var mirador = Mirador.viewer({
   "windows": [
     {
       loadedManifest: "https://iiif.bodleian.ox.ac.uk/iiif/manifest/53fd0f29-d482-46e1-aa9d-37829b49987d.json",
-      canvasIndex: number,
+      canvasIndex: pageN,
       thumbnailNavigationPosition: 'off'
     }
   ]
-/*   "layout": {
-    "width": 1,
-    "height": 1
-  } */
+  
 });
 
 // function to transform the text encoded in TEI with the xsl stylesheet "Frankenstein_text.xsl", 
@@ -98,13 +95,95 @@ function statsLoader() {
     });
   }
 
-  // Initial document load
-  documentLoader();
-  statsLoader();
+// Initial document load
+documentLoader();
+statsLoader();
   
-/* [not applying] 
+  function changeFolio(folioValue) {
+    // Update the content of the h2 element with the selected folio value
+    document.getElementById('folio').innerText = folioValue;
+  }
+
+
+function handleButtonClick(clickedButtonId) {
+    // Disable all buttons
+    disableAllButtons();
+
+    // Implement the functionality for the clicked button
+    console.log("Button clicked:", clickedButtonId);
+    // Add your specific functionality for the clicked button here
+
+    // Enable only the clicked button
+    document.getElementById(clickedButtonId).disabled = false;
+}
+
+function disableAllButtons() {
+    // Disable all buttons
+    var buttons = document.getElementsByTagName("button");
+    for (var i = 0; i < buttons.length; i++) {
+        buttons[i].disabled = true;
+    }
+}
+
+
+// Modify your existing JavaScript code
+/*
+// Add an event listener to each dropdown item
+document.addEventListener('DOMContentLoaded', function() {
+document.getElementById('xml21v').addEventListener('click', function () {
+  console.log('Clicked on 21v');
+  changeXmlPath('../Frankenstein_Chapter7_manuscript/21v.xml');
+});
+});
+
+document.getElementById('xml22r').addEventListener('click', function () {
+  changeXmlPath('../Frankenstein_Chapter7_manuscript/22r.xml');
+});
+
+// Modify the changeXmlPath function to load content dynamically
+function changeXmlPath(newPath) {
+console.log('Changing XML path to:', newPath);
+
+  // Add your code to dynamically load content based on the new XML path
+  $.ajax({
+    url: newPath,
+    type: 'GET',
+    dataType: 'xml',
+    success: function(data) {
+    console.log('XML loaded successfully');
+      // Parse and process the XML data
+      // Update the content in the 'text' div or any other appropriate element
+      $('#text').html($(data).find('body').text());
+    },
+    error: function(error) {
+      console.log('Error loading XML:', error);
+    }
+  });
+}
+
+
   // Event listener for sel1 change
-  function selectHand(event) {
+document.getElementById('yourSelectElementId').addEventListener('change', selectHand);
+// Add your JavaScript code here to dynamically load content from XML files
+$(document).ready(function() {
+   // Example using jQuery Ajax
+   $.ajax({
+     url: 'path/to/21r.xml', // Replace with the actual path to your XML file
+     type: 'GET',
+     dataType: 'xml',
+     success: function(data) {
+       // Parse and process the XML data
+       // Update the content in the 'text' div or any other appropriate element
+       $('#text').html($(data).find('your-xml-element-selector').text());
+     },
+     error: function(error) {
+       console.log('Error loading XML:', error);
+     }
+   });
+});
+*/
+
+function selectHand(event) {
   var visible_mary = document.getElementsByClassName('#MWS');
   var visible_percy = document.getElementsByClassName('#PBS');
   // Convert the HTMLCollection to an array for forEach compatibility
@@ -114,49 +193,32 @@ function statsLoader() {
     //write an forEach() method that shows all the text written and modified by both hand (in black?). 
     // The forEach() method of Array instances executes a provided function once for each array element.
         MaryArray.forEach(function(element){
-            element.style.color='#e31919';
+            element.style.color='white';
         });
         PercyArray.forEach(function(element){
-            element.style.color='#e31919';
+            element.style.color='white';
         });
     } else if (event.target.value == 'Mary') {
      //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
         MaryArray.forEach(function(element){
-            element.style.color='purple';
+            element.style.color='white';
         });
         PercyArray.forEach(function(element){
-            element.style.color='black';
+            element.style.color='#555';
         });
     } else {
      //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
         MaryArray.forEach(function(element){
-            element.style.color='black';
+            element.style.color='#555';
         });
         PercyArray.forEach(function(element){
-            element.style.color='yellow';
+            element.style.color='white';
         });
     }
-  } */
+  } 
 
 // write another function that will toggle the display of the deletions by clicking on a button
 // Function to toggle the display of deletions
-/* [not applying]
-// Add a global variable to track the visibility state of deletions
-let deletionsVisible = true;
-
-// Function to toggle the display of deletions
-function toggleDeletions() {
-  // Toggle the visibility state
-  deletionsVisible = !deletionsVisible;
-
-  // Get all deletion elements in the TEI document
-  const deletionElements = document.querySelectorAll('');
-
-  // Loop through each deletion element and toggle its visibility based on the global state
-  deletionElements.forEach(deletion => {
-    deletion.style.display = deletionsVisible ? 'none' : 'inline'; // Adjust the display property as needed
-  }); 
-}  */
 
 function toggleVisibility() {
   // Get all elements with the class "del"
@@ -167,24 +229,12 @@ function toggleVisibility() {
   dataItemsArray.forEach(item => {
     item.style.display = item.style.display === 'none' ? '' : 'none';
   });
-  
-  // Get all elements with the class "del" under the <div class="col-9">
-  const dataItems2 = document.getElementsByClassName('crossedOut');
-  
-  // Convert the HTMLCollection to an array for forEach compatibility
-  const dataItems2Array = Array.from(dataItems2);
-  
-  // Toggle visibility of the numbers under <div class="col-9">
-  dataItems2.forEach(item => {
-    item.style.display = item.style.display === 'none' ? '' : 'none';
-  });
 }
 
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, 
 // meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
 
 let readingMode = false;
-
 function toggleReadingText() {
   const delElements = document.querySelectorAll('del');
   const addElements = document.querySelectorAll('add');
@@ -196,7 +246,7 @@ function toggleReadingText() {
     });
 
     addElements.forEach(addElement => {
-      addElement.style.display = 'superscript';
+      addElement.style.display = 'supralinear';
     });
   } else {
     // Display reading version
@@ -209,7 +259,6 @@ function toggleReadingText() {
       addElement.replaceWith(textNode);
     });
   }
-
   // Toggle reading mode flag
   readingMode = !readingMode;
 }

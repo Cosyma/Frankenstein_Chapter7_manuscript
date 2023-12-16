@@ -42,12 +42,18 @@
                     <li>
                         Corrections by ﻿Percy Shelley:
                         <xsl:value-of select="count(//tei:add[@hand='#PBS']|//tei:del[@hand='#PBS'])"/>
-                    </li> 
-                   
+                    </li>                  
                 </ul>
-            </div>
-            <div class="col-3 bg-dark">
+                 
+             </div>
+            <div class="col-3">
                <h4> Modifications by writer:</h4>
+                <div class="col-20" style="margin-bottom:30px;">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button type="button" class="btn btn-outline-light" onclick="toggleVisibility()">Deletions Toggle</button>
+                        <button type="button" class="btn btn-outline-light" onclick="toggleReadingText()">Reading View</button>
+                    </div>
+                </div>
                 <div class="form-group">
                     <select class="form-control" id="sel-hand" onChange="selectHand(event)">
                         <option value="both">Both Hands</option>
@@ -60,12 +66,10 @@
         <hr/>
     </xsl:template>
  
-    <!-- Add a parameter to the template to receive the selected hand -->
+<!--
     <xsl:param name="selectedHand" />
-    <!-- Modify the template to use the selected hand parameter -->
     <xsl:template match="tei:add[@hand='#MWS']|tei:del[@hand='#MWS']">
-        <span style="color: red">
-            <!-- Use xsl:if to conditionally apply color based on the selected hand -->
+        <span style="color: red">            
             <xsl:if test="$selectedHand = 'Mary'">
                 <xsl:attribute name="style">color: purple</xsl:attribute>
             </xsl:if>
@@ -75,7 +79,6 @@
     </xsl:template>
     <xsl:template match="tei:add[@hand='#PBS']|tei:del[@hand='#PBS']">
         <span style="color: blue">
-            <!-- Use xsl:if to conditionally apply color based on the selected hand -->
             <xsl:if test="$selectedHand = 'Percy'">
                 <xsl:attribute name="style">color: yellow</xsl:attribute>
             </xsl:if>
@@ -83,7 +86,7 @@
         </span>
         <br/>
     </xsl:template>
-    
+-->  
     
 </xsl:stylesheet>
 
