@@ -49,13 +49,6 @@ var mirador = Mirador.viewer({
 
 
 
-
-  
-  
-
-
-
-
 // function to transform the text encoded in TEI with the xsl stylesheet "Frankenstein_text.xsl", 
 // this will apply the templates and output the text in the html <div id="text">
 function documentLoader() {
@@ -112,7 +105,7 @@ function statsLoader() {
 documentLoader();
 statsLoader();
   
-  function changeFolio(folioValue) {
+ /*   function changeFolio(folioValue) {
     // Update the content of the h2 element with the selected folio value
     document.getElementById('folio').innerText = folioValue;
   }
@@ -137,7 +130,7 @@ function disableAllButtons() {
         buttons[i].disabled = true;
     }
 }
-
+*/
 
 // Modify your existing JavaScript code
 /*
@@ -195,9 +188,142 @@ $(document).ready(function() {
    });
 });
 */
+/*
+function selectHand(event) {
+  const MaryElements = document.getElementsByClassName('#MWS');
+  const PercyElements = document.getElementsByClassName('#PBS');
+    if (event.target.value == 'both') {
+    //write an forEach() method that shows all the text written and modified by both hand (in black?). 
+    // The forEach() method of Array instances executes a provided function once for each array element.
+        MaryElements.forEach(element => {
+            element.style.color='white';
+        }); 
+        PercyElements.forEach(element => {
+            element.style.color='white';
+        }); 
+    } else if (event.target.value == 'Mary') {
+     //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
+        MaryElements.forEach(element => {
+            element.style.color='white';
+        }); 
+        PercyElements.forEach(element => {
+            element.style.color='#555';
+        }); 
+    } else {
+     //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
+        MaryElements.forEach(element => {
+            element.style.color='#555';
+        }); 
+        PercyElements.forEach(element => {
+            element.style.color='white';
+        }); 
+    }
+} */
+
+
 
 function selectHand(event) {
-    
+  const MaryArray = document.getElementsByClassName('#MWS');
+  const PercyArray = document.getElementsByClassName('#PBS');
+  //const delpElements = document.querySelectorAll('.crossedOut[hand="#PBS"]');
+  //const delmElements = document.querySelectorAll('.crossedOut[hand="#MWS"]');
+  //const delpArray = document.querySelectorAll('.crossedOut[hand="#PBS"]');
+  //const delmArray = document.querySelectorAll('.crossedOut[hand="#MWS"]');
+  
+    if (event.target.value === 'both') {
+        // Show all text written and modified by both hands in black
+        Array.from(MaryArray).forEach(element => {
+            element.style.color = 'white';
+        });
+
+        Array.from(PercyArray).forEach(element => {
+            element.style.color = 'white';
+        });
+    } else if (event.target.value === 'Percy') {
+        // Show all text written and modified by Mary in a different color (or highlight it)
+        // Show the text by Percy in black
+        Array.from(MaryArray).forEach(element => {
+           element.style.color = '#555'; // #4db6ac Change to the desired color for Mary
+       });
+        
+        //delpElements.forEach(element => {
+        //    element.classList.add('crossedOutP'); 
+        //});
+       
+        //Array.from(delpArray).forEach(element => {
+          //  element.classList.add('crossedOutP');  // Change to the desired color for Mary
+        //});
+       Array.from(PercyArray).forEach(element => {
+            element.style.color = '#4db6ac';
+       });
+    } else {
+        // Show all text written and modified by Percy in a different color (or highlight it)
+        // Show the text by Mary in black
+        Array.from(MaryArray).forEach(element => {
+            element.style.color = '#b64d67';
+       });
+
+         Array.from(PercyArray).forEach(element => {
+            element.style.color = '#555'; // b64d67 Change to the desired color for Percy
+        });
+        
+        //Array.from(delpArray).forEach(element => {
+        //    element.classList.add('crossedOutM');  // Change to the desired color for Mary
+        //});
+        
+        //delmElements.forEach(element => {
+        //    element.classList.add('crossedOutM'); 
+        //});
+    }
+}
+
+
+
+/* 没法选中
+ * function selectHand(event) {
+  const MaryArray = document.getElementsByClassName('#MWS');
+  const PercyArray = document.getElementsByClassName('#PBS');
+  //const MaryArray = document.querySelectorAll('.MWS');
+  //const PercyArray = document.querySelectorAll('.PBS');
+  //var visible_mary = document.getElementsByClassName('#MWS');
+  //var visible_percy = document.getElementsByClassName('#PBS');
+  // Convert the HTMLCollection to an array for forEach compatibility
+  //var MaryArray = Array.from(visible_mary);
+  //var PercyArray = Array.from(visible_percy);
+    if (event.target.value == 'both') {
+    //write an forEach() method that shows all the text written and modified by both hand (in black?). 
+    // The forEach() method of Array instances executes a provided function once for each array element.
+        MaryArray.forEach(element => {
+            element.style.color='white';
+        }); 
+        PercyArray.forEach(element => {
+            element.style.color='white';
+        }); 
+    } else if (event.target.value == 'Mary') {
+     //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
+        MaryArray.forEach(element => {
+            element.style.color='white';
+        }); 
+        PercyArray.forEach(element => {
+            element.style.color='#555';
+        }); 
+    } else {
+     //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
+        MaryArray.forEach(element => {
+            element.style.color='#555';
+        }); 
+        PercyArray.forEach(element => {
+            element.style.color='white';
+        }); 
+    }
+  } 
+ */
+
+/*  只能选一部分
+ * function selectHand(event) {
+
+  //var visible_mary = document.querySelectorAll('span.MWS');
+  //var visible_percy = document.querySelectorAll('span.PBS');
   var visible_mary = document.getElementsByClassName('#MWS');
   var visible_percy = document.getElementsByClassName('#PBS');
   // Convert the HTMLCollection to an array for forEach compatibility
@@ -215,10 +341,10 @@ function selectHand(event) {
     } else if (event.target.value == 'Mary') {
      //write an forEach() method that shows all the text written and modified by Mary in a different color (or highlight it) and the text by Percy in black. 
         MaryArray.forEach(function(element){
-            element.style.color='white';
+            element.style.color='red';
         });
         PercyArray.forEach(function(element){
-            element.style.color='#555';
+            element.style.color='white';
         });
     } else {
      //write an forEach() method that shows all the text written and modified by Percy in a different color (or highlight it) and the text by Mary in black.
@@ -229,7 +355,7 @@ function selectHand(event) {
             element.style.color='white';
         });
     }
-  } 
+  } */
 
 // write another function that will toggle the display of the deletions by clicking on a button
 // Function to toggle the display of deletions

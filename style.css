@@ -5,6 +5,10 @@ body {
 }
 
 
+
+
+
+
 .content {
   max-width: 1500px;
   margin: auto;
@@ -115,7 +119,7 @@ h2{
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     margin-top:10px;
-    margin-bottom:500px;
+    margin-bottom:550px;
 }
 .pageinfor{
   max-width: 1500px;
@@ -193,6 +197,13 @@ div.transbox p {
     transform: translateY(-40%);            
     font-style: italic;
 }
+.supraAdd{
+    display: inline-block; 
+    position: relative;
+    bottom: 50%;
+    transform: translateY(-40%);            
+    font-style: italic;
+}
 .underlinear{
     display: inline-block; 
     position: relative;
@@ -211,13 +222,37 @@ div.transbox p {
     
 }
 
-
 .underline{
     text-decoration: underline
 }
+
+.crossedOut{
+    text-decoration-line: line-through;
+}
+
+/* 
 .crossedOut{
     color:#171415;
     text-decoration-line: line-through;
 }
 
+.crossedOutP{
+    color:#4db6ac;
+    text-decoration-line: line-through;
+}
+.crossedOutM{
+    color:#b64d67;
+    text-decoration-line: line-through;
+}
+ */
+
+
+
+.MWS{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.PBS{
+    font-family: Arial, Helvetica, sans-serif;
+}
 

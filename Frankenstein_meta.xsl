@@ -51,14 +51,14 @@
              </div>
             <div class="col-3">
                <h4> Modifications by writer:</h4>
-                <div class="col-20" style="margin-bottom:30px;">
+                <div class="col-20 " style="margin-bottom:30px;">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-outline-light" onclick="toggleVisibility()">Deletions Toggle</button>
                         <button type="button" class="btn btn-outline-light" onclick="toggleReadingText()" id="yourToggleButtonId">Reading View</button>
                     </div>
                 </div>
                 <div class="form-group">
-                    <select class="form-control" id="sel-hand" onChange="selectHand(event)">
+                    <select class="form-control sticky-top" id="sel-hand" onChange="selectHand(event)">
                         <option value="both">Both Hands</option>
                         <option value="Mary">Mary Shelley's Hand Highlighted</option>
                         <option value="Percy">Percy Shelley's Hand Highlighted</option>
@@ -69,7 +69,7 @@
         <hr/>
     </xsl:template>
  
-<!--
+    <!--id="sel-hand" 
     <xsl:param name="selectedHand" />
     <xsl:template match="tei:add[@hand='#MWS']|tei:del[@hand='#MWS']">
         <span style="color: red">            
