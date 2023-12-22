@@ -35,15 +35,14 @@
          <div type="page" n="21r" rend="recto">
             <pb facs="#p21r"/>
             <head>
-               Chapter 7<hi rend="sup"><hi rend="u">th</hi></hi>
+               Chapter 7<hi rend="sup">th</hi>
                <metamark function="pagenumber"><num><hi rend="circled">75</hi></num></metamark>
             </head>
             <p>
                <l>It was on a dreary night of November</l>
                that I beheld <add place="supralinear" hand="#PBS" rend="black ink"><del type="crossedOut" hand="#PBS" rend="black ink">the frame on whic</del></add> 
-               my man comple<del type="crossedOut" hand="#MWS" rend="black ink">at</del>
-               <add place="overwritten" hand="#MWS" rend="black ink">te</add>ed
-               <del type="crossedOut" hand="#MWS" rend="black ink">.</del>
+               my man comple <del type="crossedOut" hand="#MWS" rend="black ink">at</del>
+               <add place="overwritten" hand="#MWS" rend="black ink">te</add>ed.
                <add place="overwritten" hand="#PBS" rend="black ink">,</add> 
                <del type="crossedOut" hand="#PBS" rend="black ink">And</del><lb/>
                with an anxiety that almost amount<lb/>
@@ -86,7 +85,7 @@
                   skin scarcely covered the work of<lb/>
                muscles and arteries beneath; his hair<lb/>
                was 
-                  <metamark>&#8257;</metamark>
+               <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
                   <add place="marginleft" hand="#MWS" rend="black ink">of a lustrous black &amp;</add>
                   flowing and his teeth of a pearly white<lb/>
                ness but these luxurianc

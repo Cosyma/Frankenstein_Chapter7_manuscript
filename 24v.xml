@@ -65,9 +65,8 @@
                <del type="crossedOut" hand="#MWS" rend="black ink">h</del>er.
                <del type="crossedOut" hand="#MWS" rend="black ink">I therefore</del><lb/>
             entreat
-               <del type="crossedOut" hand="#MWS" rend="black ink">ed</del>
-               <add>ing</add> him 
-               <metamark>&#8257;</metamark>
+            <del type="crossedOut" hand="#MWS" rend="black ink">ed</del>ing him 
+            <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
                <add place="supralinear" hand="#PBS" rend="black ink">therefore</add> 
                to remain a few<lb/>
             minute

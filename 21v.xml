@@ -55,14 +55,14 @@
                 ed these dreams vanished and breathless<lb/>
                 horror and disgust filled my heart.<lb/> 
                 Unable            
-                    <metamark>&#8257;</metamark>
-                    <add place="supralinear" hand="#MWS" rend="black ink"><hi rend="sup" >to endure</hi></add>
+                <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
+                    <add place="supralinear" hand="#MWS" rend="black ink">to endure</add>
                     the aspect of the 
                     <del type="crossedOut" hand="#MWS" rend="black ink">creature</del>
-                    <add place="supralinear" hand="#PBS" rend="black ink"><hi rend="sup" >being</hi></add> I<lb/>
+                    <add place="supralinear" hand="#PBS" rend="black ink">being</add> I<lb/>
                 had created, I rushed out of the room and<lb/>
                 <del type="crossedOut" hand="#MWS" rend="blackink">remained</del>
-                    <add place="supralinear" hand="#PBS" rend="black ink"><hi rend="sup">continued</hi></add> 
+                    <add place="supralinear" hand="#PBS" rend="black ink">continued</add> 
                     a long time traversing my<lb/>
                 bed chamber unable to compose my<lb/>
                 mind to sleep. At length 
@@ -77,7 +77,7 @@
                 But it was in vain; I slept indeed but<lb/>
                 I was disturbed by the wildest dreams-<lb/>
                 I saw Elizabeth
-                    <metamark>&#8257;</metamark>
+                <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
                     <add place="supralinear" hand="#MWS" rend="black ink">in the bloom of health</add>
                      walking in the streets of<lb/>
                 Ingolstadt; delighted &amp; surprised I embraced<lb/>

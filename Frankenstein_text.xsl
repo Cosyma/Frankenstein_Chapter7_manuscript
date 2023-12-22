@@ -35,7 +35,6 @@
             <div class="transcription">
                 <xsl:apply-templates select="//tei:div"/>
             </div>
-            
         </div>
         </div>    
     </xsl:template>
@@ -50,16 +49,16 @@
  
     <xsl:template match="tei:p">
         <p style="
-            text-indent:10px;
-            font-family: Arial, Helvetica, sans-serif;">
+            text-indent:15px;
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 200%;">
             <xsl:apply-templates/>
         </p>
     </xsl:template>
 
     <xsl:template match="tei:add[@place = 'marginleft']">
-        <span style="
-            display: inline-block; 
-            position: relative;">
+        <span class="marginAdd" 
+            >
             <xsl:apply-templates/>
         </span>
     </xsl:template>
@@ -70,6 +69,10 @@
         <xsl:apply-templates/>
     </xsl:template>
     
+    <xsl:template match="tei:del">
+        <!-- Your processing for all tei:add elements -->
+        <xsl:apply-templates/>
+    </xsl:template>
     
     <xsl:template match="tei:del">
       <del>
@@ -117,13 +120,14 @@
     </xsl:template>
     
     <xsl:template match="tei:add">
-        <add>
+        <span>
             <xsl:attribute name="class">
                 <xsl:value-of select="@type"/>
             </xsl:attribute>
             <xsl:apply-templates/>
-        </add>
+        </span>
     </xsl:template>
+   
     
     <xsl:template match="tei:add">
         <add>
@@ -137,24 +141,36 @@
     <!-- all the supralinear additions are given in a span with the class supraAdd, 
         make sure to put this class in superscript in the CSS file, -->
     <xsl:template match="tei:add[@place = 'supralinear']">
-        <span style="
+        <!-->add class to span has the class name add <-->
+        <span class="supraAdd"
+            style="
             display: inline-block; 
             position: relative;
             bottom: 50%;
             transform: translateY(-40%);            
             font-style: italic;
-            ">
+            
+            ">  
             <!--￥￥￥ 用 inline-block del消失 vertical-align: middle; -->
             <xsl:apply-templates/>
-        </span>
+        </span>  
     </xsl:template>
     
-    <!-- add additional templates below, for example to transform the--> 
     <!--<xsl:template match="tei:del[@type ='crossedOut']">
         <span style="text-decoration-line: line-through;">
             <xsl:apply-templates/>
         </span>
     </xsl:template> -->
+    
+    <xsl:template match="tei:del[@type ='crossedOut']">
+        <span class="crossedOut" 
+              style="
+              color:#171415;
+              text-decoration-line: line-through;">
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
     <!--tei:lb in <br/> empty elements,-->
     
     <xsl:template match="tei:l">
@@ -175,14 +191,31 @@
     
     <!--tei:hi[@rend = 'sup'] in <sup> elements, the underlined text,-->
     <xsl:template match="tei:hi[@rend = 'sup']">
-        <span style="
+        <span class="sup" style="
+            display: inline-block; 
+            position: relative;
+            bottom: 50%;
+            transform: translateY(-40%);            
             font-style: italic;">
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
     <xsl:template match="tei:hi[@rend = 'u']">
-        <span style='text-decoration: underline'>
+        <span class = "underline" style='
+            text-decoration: underline
+            '>
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    
+    <xsl:template match="tei:hi[@rend = 'underlinear']">
+        <span class = "underlinear" 
+            style='display: inline-block; 
+            position: relative;
+            transform: translateY(30%);            
+            font-style: italic;
+            letter-spacing: -500px;'>
             <xsl:apply-templates/>
         </span>
     </xsl:template>
@@ -202,7 +235,7 @@
     
     <!--additions with the attribute "overwritten" etc. -->
     <xsl:template match="tei:add[@place = 'overwritten']">
-        <span style="font-style: italic;">
+        <span class="overAdd" style="font-style: italic;">
             <xsl:apply-templates/>
         </span>
     </xsl:template>  

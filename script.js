@@ -21,6 +21,7 @@ var mirador = Mirador.viewer({
     allowTopMenuButton: false,
     allowMaximize: false,
     hideWindowTitle: true,
+    defaultView: 'single',
     panels: {
       info: false,
       attribution: false,
@@ -28,20 +29,32 @@ var mirador = Mirador.viewer({
       annotations: false,
       search: false,
       layers: false,
-    }
+    },
+    views: [
+      { key: 'single', behaviors: ['individuals', 'paged'] },
+      ],
   },
   "workspaceControlPanel": {
     enabled: false,
   },
-  "windows": [
-    {
+  "windows": [{
       loadedManifest: "https://iiif.bodleian.ox.ac.uk/iiif/manifest/53fd0f29-d482-46e1-aa9d-37829b49987d.json",
       canvasIndex: pageN,
       thumbnailNavigationPosition: 'off'
-    }
-  ]
-  
+    }],
+    
+   selectedTheme: 'dark',
+ 
 });
+
+
+
+
+  
+  
+
+
+
 
 // function to transform the text encoded in TEI with the xsl stylesheet "Frankenstein_text.xsl", 
 // this will apply the templates and output the text in the html <div id="text">
@@ -184,6 +197,7 @@ $(document).ready(function() {
 */
 
 function selectHand(event) {
+    
   var visible_mary = document.getElementsByClassName('#MWS');
   var visible_percy = document.getElementsByClassName('#PBS');
   // Convert the HTMLCollection to an array for forEach compatibility
@@ -220,7 +234,7 @@ function selectHand(event) {
 // write another function that will toggle the display of the deletions by clicking on a button
 // Function to toggle the display of deletions
 
-function toggleVisibility() {
+/*  function toggleVisibility() {
   // Get all elements with the class "del"
   const dataItems = document.querySelectorAll('del');
   // Convert the HTMLCollection to an array for forEach compatibility
@@ -229,39 +243,62 @@ function toggleVisibility() {
   dataItemsArray.forEach(item => {
     item.style.display = item.style.display === 'none' ? '' : 'none';
   });
+}*/
+
+
+function toggleVisibility() {
+  // Get all elements with the class "crossedOut"
+  const crossedOutItems = document.querySelectorAll('.crossedOut');
+
+  // Toggle visibility of the crossed out items
+  crossedOutItems.forEach(item => {
+    item.style.display = item.style.display === 'none' ? '' : 'none';
+  });
 }
+
+
 
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, 
 // meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
+ let readingMode = false;
 
-let readingMode = false;
-function toggleReadingText() {
-  const delElements = document.querySelectorAll('del');
-  const addElements = document.querySelectorAll('add');
-
+  function toggleReadingText() {
+  const delElements = document.querySelectorAll('.crossedOut');
+  const addElements = document.querySelectorAll('span.supraAdd');
+  const metamarkElements = document.querySelectorAll('.underlinear');
+  
   if (readingMode) {
-    // Restore original version
-    delElements.forEach(delElement => {
-      delElement.style.display = '';
-    });
+        // If in reading mode, show deleted elements and replace supralinear additions
+        delElements.forEach(element => {
+            element.style.display = '';
+        }); 
+        addElements.forEach(element => {
+           // element.style.color = 'white';
+            element.style.display = '';
+            element.classList.add('supralinear'); 
+        });
+        metamarkElements.forEach(element => {
+            element.style.display = '';
+            element.classList.add('underlinear'); 
+        });
 
-    addElements.forEach(addElement => {
-      addElement.style.display = 'supralinear';
-    });
-  } else {
-    // Display reading version
-    delElements.forEach(delElement => {
-      delElement.style.display = 'none';
-    });
+    } else {
+        // If not in reading mode, hide deleted elements and revert supralinear additions
+        delElements.forEach(element => {
+            element.style.display = 'none';
+        });
+        addElements.forEach(element => {
+            element.style.display = 'inline';
+        });
+        metamarkElements.forEach(element => {
+            element.style.display = 'none';
+        });
+        
+    }
 
-    addElements.forEach(addElement => {
-      const textNode = document.createTextNode(addElement.textContent);
-      addElement.replaceWith(textNode);
-    });
-  }
-  // Toggle reading mode flag
-  readingMode = !readingMode;
+    readingMode = !readingMode; // Toggle reading mode
 }
+
 
 
 

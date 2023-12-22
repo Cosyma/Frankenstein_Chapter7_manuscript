@@ -42,7 +42,10 @@
                     <li>
                         Corrections by ﻿Percy Shelley:
                         <xsl:value-of select="count(//tei:add[@hand='#PBS']|//tei:del[@hand='#PBS'])"/>
-                    </li>                  
+                    </li> 
+                    
+                   
+                    
                 </ul>
                  
              </div>
@@ -51,7 +54,7 @@
                 <div class="col-20" style="margin-bottom:30px;">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         <button type="button" class="btn btn-outline-light" onclick="toggleVisibility()">Deletions Toggle</button>
-                        <button type="button" class="btn btn-outline-light" onclick="toggleReadingText()">Reading View</button>
+                        <button type="button" class="btn btn-outline-light" onclick="toggleReadingText()" id="yourToggleButtonId">Reading View</button>
                     </div>
                 </div>
                 <div class="form-group">
@@ -87,6 +90,7 @@
         <br/>
     </xsl:template>
 -->  
+    
     
 </xsl:stylesheet>
 

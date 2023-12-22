@@ -43,7 +43,7 @@
             shroud envolepped her form &amp; I saw<lb/>
          the grave worms crawling in the folds of<lb/>
          the flannel; I started 
-            <metamark>&#8257;</metamark>
+        <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
             <!--'^'is used as metamark-->
             <add place="supralinear" hand="#MWS" rend="black ink">from my sleep</add> with horror, a<lb/>
          <del type="crossedOut" hand="#MWS" rend="black ink">when I saw</del>
@@ -58,14 +58,14 @@
          yellow light of the moon as it forced<lb/>
          its way through the window shutters, I<lb/>
          beheld the wretch — the miserable<lb/>
-         monster whom I had created;
-            <add place="infralinear" hand="#PBS" rend="black ink"><metamark>--</metamark></add>
+        monster whom I had <hi rend = "u">created ;
+        
              <!--'-'is used as metamark, a thick line is used-->
-            he hel d<lb/>
+          he </hi>hel d<lb/>
          up the curtain, 
             <add place="infralinear" hand="#MWS" rend="black ink"><metamark>--</metamark></add>
             <!--'-'is used as metamark, a thick line is used-->
-            and his eyes; if eyes<lb/>
+        and <hi rend = "u">his eyes</hi>; if eyes<lb/>
          they may be called, were fixed on me – His<lb/>
          <add place="marginleft" hand="#PBS" rend="black ink">inarticulate</add>
          jaws opened and he muttered 
@@ -105,7 +105,7 @@
         Oh! no mortal could support <lb/>
         the horror of that countenance.a<lb/>
         mummy
-          <metamark>&#8257;</metamark>
+        <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
           <add place="margintop" hand="#MWS" rend="black ink">again</add>
         endued with 
           <del type="crossedOut" hand="#MWS" rend="black ink">life</del>

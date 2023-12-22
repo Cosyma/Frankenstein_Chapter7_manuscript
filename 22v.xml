@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
   <teiHeader>
     <fileDesc>
@@ -19,7 +20,8 @@
         </availability>
       </publicationStmt>
       <sourceDesc>
-        <p>Draft of Frankenstein, [August or September] – [?December] 1816. | Bodleian MS. 
+        <p>Draft of Frankenstein, 
+          [August or September] – [?December] 1816. | Bodleian MS. 
           Abinger c.56 (formerly designated Dep. 477/1) consists of 62 leaves originally 
           bound in Notebook A, one of two now disbound notebooks in which Mary W. Shelley 
           (MWS) drafted the two-volume version of Frankenstein. The draft in c.56 runs 
@@ -28,9 +30,9 @@
       </sourceDesc>
     </fileDesc>
   </teiHeader>
-  <text>
-    <body>
-      <div type="page" n="22v" rend="verso">
+  <text>    
+<body>
+  <div type="page" n="22v" rend="verso"> <!-->rend="verso"<-->
         <pb facs="#p22v"/>
         <metamark function="pagenumber"><num><hi rend="circled">78</hi></num></metamark>
         <p>
@@ -45,12 +47,14 @@
             such as even Dante<lb/>
           could never have conceived.<lb/>
         </p>
-        
+        <p>
+          
+        </p>
         <p>
           I passed the night wretchedly–<lb/>
           sometimes my pulses beat so quickly and<lb/>
           ha 
-            <metamark>&#8257;</metamark>
+          <hi rend="underlinear"><metamark>&#8257;</metamark></hi>
             <add place="supralinear" hand="#MWS" rend="black ink">r</add>
             dly that I felt the palpitation of<lb/>
           every artery: at others I nearly sunk<lb/>
@@ -60,18 +64,18 @@
             languor and ex-<lb/>
           treme weakness.
             <del type="crossedOut" hand="#MWS" rend="black ink">Surely so wretched a</del><lb/>
-          
-          <add place="marginleft" hand="#MWS" rend="black ink">X<lb/>
-          and mingled<lb/>
-          with this hor<lb/>
-          ror I felt the<lb/>
-            bitterness of<lb/></add>
-          <add place="marginleft" hand="#MWS" rend="black ink"><del type="crossedOut" hand="#MWS" rend="black ink" >disapp</del>
-          disappointment:<lb/></add>
-          
           <del type="crossedOut" hand="#MWS" rend="black ink" >creature as I never before existed.</del><lb/>
-              <add place="supralinear" type="crossedOut" hand="#MWS" rend="black ink">X<lb/></add>
-          Dreams that had been my food and<lb/>
+          <add place="supralinear" rend="black ink" hand="#MWS">X</add>
+          <add place="marginleft" hand="#MWS" rend="black ink">  X</add><lb/>
+          <add place="marginleft" hand="#MWS" rend="black ink">
+            and mingled<lb/>
+            with this hor<lb/>
+            ror I felt the<lb/>
+            bitterness of<lb/></add>
+          <del type="crossedOut" hand="#MWS" rend="black ink">
+            <add place="marginleft" hand="#MWS" rend="black ink">disapp</add></del>
+          <add place="marginleft" hand="#MWS" rend="black ink"> disappointment:</add>
+         Dreams that had been my food and<lb/>
           rest for so long a space were now<lb/>
           become a hell to me– 
             <del type="crossedOut" rend="black ink" hand="#MWS">I</del> 
@@ -109,6 +113,8 @@
             the wretch whom I feared every
             turn-<lb/>
           ing in the street would present to<lb/>
+          
+          
         </p>
      
       </div>
