@@ -13,7 +13,7 @@
         <div class="col-3"><br/><br/><br/><br/><br/>
             <xsl:for-each select="//tei:add[@place = 'marginleft']">
                 <xsl:choose>
-                    <xsl:when test="parent::tei:del">
+                    <xsl:when test="parent::tei:del"> <!--parent-->
                         <del>
                             <xsl:attribute name="class">
                                 <xsl:value-of select="attribute::hand" />
@@ -21,7 +21,7 @@
                             <xsl:value-of select="."/></del><br/>
                     </xsl:when>
                     <xsl:otherwise>
-                        <span >
+                        <span>
                             <xsl:attribute name="class">
                                 <xsl:value-of select="attribute::hand" />
                             </xsl:attribute>
@@ -31,56 +31,97 @@
                 </xsl:choose>
             </xsl:for-each> 
         </div>
-        <div class="col-9"> 
+            
+        <div class="col-9">
             <div class="transcription">
-                <xsl:apply-templates select="//tei:div"/>
+                <xsl:apply-templates select="//tei:div"/> 
+                <!-- 
+                <xsl:for-each select="//tei:del[@type = 'crossOut'] | //tei:add[@type = 'supralinear']">
+                    <xsl:choose>
+                        <xsl:when test="self::tei:del">
+                            <del>
+                                <xsl:attribute name="class">
+                                    <xsl:value-of select="attribute::hand" />
+                                </xsl:attribute>
+                                <xsl:value-of select="."/></del>
+                        </xsl:when>
+                        <xsl:when test="self::tei:add">
+                            <add>
+                                <xsl:attribute name="class">
+                                    <xsl:value-of select="attribute::hand" />
+                                </xsl:attribute>
+                                <xsl:value-of select="."/>
+                            </add>
+                        </xsl:when>
+                    </xsl:choose>
+                </xsl:for-each>
+                 -->
             </div>
         </div>
-        </div>    
+     </div>    
+    </xsl:template>
+   
+
+    <xsl:template match="tei:del">
+        <del>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </del>
+    </xsl:template>
+    <xsl:template match="tei:add">
+        <add>
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand"/>
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </add>
     </xsl:template>
     
 
- 
-    
+    <!--test
+    无效    
+    <xsl:template match="tei:del | tei:add">
+        <xsl:element name="{local-name()}">
+            <xsl:attribute name="class">
+                <xsl:value-of select="@hand" />
+            </xsl:attribute>
+            <xsl:apply-templates/>
+        </xsl:element>
+    </xsl:template>
+    -->
+
+    <!--test 
+    全部显示或者隐藏
     <xsl:template match="tei:text">
         <text class="#MWS"><xsl:apply-templates/></text>
-    </xsl:template>
-    <xsl:template match="tei:text">
-        <text class="#PBS"><xsl:apply-templates/></text>
-    </xsl:template>
-     
-    <xsl:template match="tei:add[@hand ='#MWS']">
-        <add class="#MWS"><xsl:apply-templates/></add>
-    </xsl:template>
-    <xsl:template match="tei:add[@hand = '#PBS']">
-        <add class="#PBS"><xsl:apply-templates/></add>
-    </xsl:template>
-    
-    <xsl:template match="tei:del[@hand ='#MWS']">
-        <add class="#MWS"><xsl:apply-templates/></add>
-    </xsl:template>
-    <xsl:template match="tei:del[@hand = '#PBS']">
-        <add class="#PBS"><xsl:apply-templates/></add>
     </xsl:template>
     <xsl:template match="tei:div">
         <div class="#MWS"><xsl:apply-templates/></div>
     </xsl:template>
-    <xsl:template match="tei:div">
-        <div class="#PBS"><xsl:apply-templates/></div>
+
+    无效
+    <xsl:template match="tei:div/p/add[@hand ='#MWS']">
+        <add class="#MWS"><xsl:apply-templates/></add>
     </xsl:template>
-    <!-->   
-    <xsl:template match="tei:add[@hand ='#MWS']">
-        <span class="MWS" >
-            <xsl:apply-templates/>
-        </span>
-    </xsl:template>
-    
     <xsl:template match="tei:add[@hand = '#PBS']">
-        <span class="MWS" >
+        <add class="#PBS"><xsl:apply-templates/></add>
+    </xsl:template>
+    
+    无效
+    <xsl:template match="tei:div//tei:p/tei:add[@hand ='#MWS']">
+        <span class="#MWS" >
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>
+    <xsl:template match="tei:del[@hand = '#MWS']">
+        <span class="#MWS" >
             <xsl:apply-templates/>
         </span>
     </xsl:template>
     
+    无效:转换为css class
     <xsl:template match="tei:del[@hand = '#MWS']">
         <span class="MWS" >
             <xsl:apply-templates/>
@@ -88,11 +129,12 @@
     </xsl:template>
     
     <xsl:template match="tei:del[@hand = '#PBS']">
-        <span class="MWS" >
+        <span class="PBS" >
             <xsl:apply-templates/>
         </span>
-    </xsl:template>
-    <-->     
+    </xsl:template>    
+    -->
+    
  
     <xsl:template match="tei:p">
         <p style="
@@ -102,12 +144,14 @@
             <xsl:apply-templates/>
         </p>
     </xsl:template>
+    
 
     <xsl:template match="tei:add[@place = 'marginleft']">
         <span class="marginAdd" >
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+
     
  
     <!-- all the supralinear additions are given in a span with the class supraAdd, 
@@ -124,6 +168,14 @@
             <xsl:apply-templates/>
         </span>
     </xsl:template>
+    
+    <!--test
+    <xsl:template match="tei:add[@hand ='#MWS']">
+        <span class="Upper" >
+            <xsl:apply-templates/>
+        </span>
+    </xsl:template>-->
+    
     
     <!--tei:lb in <br/> empty elements,-->
     

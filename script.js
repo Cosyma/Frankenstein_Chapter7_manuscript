@@ -223,12 +223,9 @@ function selectHand(event) {
 
 
 function selectHand(event) {
-  const MaryArray = document.getElementsByClassName('#MWS');
-  const PercyArray = document.getElementsByClassName('#PBS');
-  //const delpElements = document.querySelectorAll('.crossedOut[hand="#PBS"]');
-  //const delmElements = document.querySelectorAll('.crossedOut[hand="#MWS"]');
-  //const delpArray = document.querySelectorAll('.crossedOut[hand="#PBS"]');
-  //const delmArray = document.querySelectorAll('.crossedOut[hand="#MWS"]');
+
+const MaryArray = document.getElementsByClassName('#MWS');
+const PercyArray = document.getElementsByClassName('#PBS');
   
     if (event.target.value === 'both') {
         // Show all text written and modified by both hands in black
@@ -244,15 +241,10 @@ function selectHand(event) {
         // Show the text by Percy in black
         Array.from(MaryArray).forEach(element => {
            element.style.color = '#555'; // #4db6ac Change to the desired color for Mary
+            
        });
         
-        //delpElements.forEach(element => {
-        //    element.classList.add('crossedOutP'); 
-        //});
-       
-        //Array.from(delpArray).forEach(element => {
-          //  element.classList.add('crossedOutP');  // Change to the desired color for Mary
-        //});
+
        Array.from(PercyArray).forEach(element => {
             element.style.color = '#4db6ac';
        });
@@ -267,13 +259,7 @@ function selectHand(event) {
             element.style.color = '#555'; // b64d67 Change to the desired color for Percy
         });
         
-        //Array.from(delpArray).forEach(element => {
-        //    element.classList.add('crossedOutM');  // Change to the desired color for Mary
-        //});
-        
-        //delmElements.forEach(element => {
-        //    element.classList.add('crossedOutM'); 
-        //});
+
     }
 }
 
@@ -371,8 +357,29 @@ function selectHand(event) {
   });
 }*/
 
-
 function toggleVisibility() {
+  // Get all elements with the class "crossedOut" and all <del> elements
+  const crossedOutItems1 = Array.from(document.querySelectorAll('del'));
+  const crossedOutItems2 = Array.from(document.querySelectorAll('.crossedOut'));
+
+  // Toggle visibility of the first set of crossed out items
+  crossedOutItems1.forEach(item => {
+    item.style.display = item.style.display === 'none' ? '' : 'none';
+  });
+
+  // Toggle visibility of the second set of crossed out items
+  crossedOutItems2.forEach(item => {
+    item.style.display = item.style.display === 'none' ? '' : 'none';
+  });
+}
+
+ 
+// version.1216_marginleft deletation hidable
+
+/*
+ * 
+ * 基础款
+ * function toggleVisibility() {
   // Get all elements with the class "crossedOut"
   const crossedOutItems = document.querySelectorAll('.crossedOut');
 
@@ -382,20 +389,46 @@ function toggleVisibility() {
   });
 }
 
+优化中：
+function toggleVisibility() {
+  // Get all elements with the class "crossedOut"
+  const crossedOutItems = document.querySelectorAll('.crossedOut');
 
+  // Toggle visibility of the crossed out items
+  crossedOutItems.forEach(item => {
+    // Check if the element itself has the class "crossedOut"
+    if (item.classList.contains('crossedOut')) {
+      item.style.display = item.style.display === 'none' ? '' : 'none';
+    } else {
+      // If it doesn't have the class directly, check its descendants
+      const addElement = item.querySelector('.crossedOut');
+      if (addElement) {
+        addElement.style.display = addElement.style.display === 'none' ? '' : 'none';
+      }
+    }
+  });
+}
+
+
+
+  */
 
 // EXTRA: write a function that will display the text as a reading text by clicking on a button or another dropdown list, 
 // meaning that all the deletions are removed and that the additions are shown inline (not in superscript)
  let readingMode = false;
 
   function toggleReadingText() {
-  const delElements = document.querySelectorAll('.crossedOut');
+  const delElements1 = document.querySelectorAll('.crossedOut');
+  const delElements2 = document.querySelectorAll('del');
   const addElements = document.querySelectorAll('span.supraAdd');
   const metamarkElements = document.querySelectorAll('.underlinear');
   
   if (readingMode) {
         // If in reading mode, show deleted elements and replace supralinear additions
-        delElements.forEach(element => {
+        delElements1.forEach(element => {
+            element.style.display = '';
+        }); 
+        delElements2.forEach(element => {
             element.style.display = '';
         }); 
         addElements.forEach(element => {
@@ -410,7 +443,10 @@ function toggleVisibility() {
 
     } else {
         // If not in reading mode, hide deleted elements and revert supralinear additions
-        delElements.forEach(element => {
+        delElements1.forEach(element => {
+            element.style.display = 'none';
+        });
+        delElements2.forEach(element => {
             element.style.display = 'none';
         });
         addElements.forEach(element => {

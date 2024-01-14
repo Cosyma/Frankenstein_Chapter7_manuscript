@@ -66,7 +66,7 @@
             </p>
             
             <p>
-               <del type="crossedOut" hand="#MWS" rend="black ink">But how</del> How can I describe my<lb/>
+               <del rend="black ink" hand="#MWS"  type="crossedOut">But how</del> How can I describe my<lb/>
                emotion at this catastrophe; or how deli<lb/>
                neate the wretch whom with such<lb/>
                infinite pains and care I had endeavoured<lb/>
@@ -78,6 +78,15 @@
                   <add place="marginleft" hand="#PBS" rend="black ink">beautiful</add>
                   <del type="crossedOut" hand="#MWS" rend="black ink">
                      <add place="marginleft" hand="#MWS" rend="black ink">handsome</add></del>. 
+               <!--test>
+               <del type="crossedOut" hand="#MWS" rend="black ink">
+                  <add place="marginleft" hand="#MWS" rend="black ink">Adeladddel</add></del>. 
+               <add type="crossedOut" place="marginleft" hand="#MWS" rend="black ink">
+                  <del type="crossedOut" hand="#MWS" rend="black ink">Badddeladd</del></add><lb/>
+               
+               <add type="crossedOut" place="marginleft" hand="#MWS" rend="black ink">Caddtype="crossedOut"</add><lb/>
+               <-->
+               
                   <del type="crossedOut" hand="#MWS" rend="black ink">Handsome</del>
                      <add place="supralinear" hand="#PBS" rend="black ink">Beautiful</add>; Great God! His<lb/>
                <del type="crossedOut" hand="#MWS" rend="black ink">dun</del> 

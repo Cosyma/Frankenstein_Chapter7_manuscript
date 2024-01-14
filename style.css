@@ -190,13 +190,7 @@ div.transbox p {
   color: #000000;
 }
 
-.supralinear{
-    display: inline-block; 
-    position: relative;
-    bottom: 50%;
-    transform: translateY(-40%);            
-    font-style: italic;
-}
+
 .supraAdd{
     display: inline-block; 
     position: relative;
@@ -228,6 +222,15 @@ div.transbox p {
 
 .crossedOut{
     text-decoration-line: line-through;
+    
+}
+
+.supralinear{
+    display: inline-block; 
+    position: relative;
+    bottom: 50%;
+    transform: translateY(-40%);            
+    font-style: italic;
 }
 
 /* 
@@ -250,9 +253,24 @@ div.transbox p {
 
 .MWS{
     font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+
+
+class.MWS{
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
 }
 
 .PBS{
     font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
 }
 
+class.PBS{
+    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+}
+.Upper {
+  text-transform: uppercase;
+}
