@@ -43,7 +43,7 @@
           <l rend="indent"> "My dear Frankenstein," exclaimed he.</l>
           <l>"How glad I am to see you; how</l>
           <l>"fortunate <add place="supralinear" hand="#PBS" rend="black ink">that</add> you should be here at</l>
-          <l>"the <metamark>&#8257;</metamark> <add place="supralinear" hand="#PBS" rend="black ink" >very</add> moment of my alighting."</l>
+          <l>"the <hi rend="underlinear"><metamark>&#8257;</metamark></hi> <add place="supralinear" hand="#PBS" rend="black ink" >very</add> moment of my alighting."</l>
         </p>
         
         <p>
@@ -54,7 +54,7 @@
           <l>of home so dear to my recollection.</l>
           <l>I grasped his hand, and in a moment</l>
           <l>forgot my horror and misfortune</l>
-          <l>I felt <add place="supralinear" hand="#PBS" rend="black ink"><metamark>&#8257;</metamark>suddenly,and</add> for the first time 
+          <l>I felt <add place="supralinear" hand="#PBS" rend="black ink"><hi rend="underlinear"><metamark>&#8257;</metamark></hi>suddenly,and</add> for the first time 
           <del type="crossedOut" hand="#MWS" rend="black ink">for</del><add place="supralinear" hand="#PBS" rend="black ink">during</add></l>
           <l>many months<add place="inline" hand="#PBS" rend="black ink">,</add>calm and serene</l>
           <l>joy. I welcomed my friend therefore</l>
