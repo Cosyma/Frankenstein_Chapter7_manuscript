@@ -35,7 +35,7 @@
         <div class="col-9">
             <div class="transcription">
                 <xsl:apply-templates select="//tei:div"/> 
-                <!-- 
+                <!-- trail1
                 <xsl:for-each select="//tei:del[@type = 'crossOut'] | //tei:add[@type = 'supralinear']">
                     <xsl:choose>
                         <xsl:when test="self::tei:del">
@@ -79,9 +79,20 @@
         </add>
     </xsl:template>
     
-
-    <!--test
-    无效    
+    <xsl:template match="tei:add">
+        <add class="#PBS"><xsl:apply-templates/></add>
+    </xsl:template>
+    <xsl:template match="tei:add">
+        <add class="#MWS"><xsl:apply-templates/></add>
+    </xsl:template>
+    <xsl:template match="tei:del">
+        <del class="#PBS"><xsl:apply-templates/></del>
+    </xsl:template>
+    <xsl:template match="tei:del">
+        <del class="#MWS"><xsl:apply-templates/></del>
+    </xsl:template>
+    
+    <!--trail2: no use    
     <xsl:template match="tei:del | tei:add">
         <xsl:element name="{local-name()}">
             <xsl:attribute name="class">
@@ -92,8 +103,7 @@
     </xsl:template>
     -->
 
-    <!--test 
-    全部显示或者隐藏
+    <!--trail3: no use | hide all or show all; 全部显示或者隐藏
     <xsl:template match="tei:text">
         <text class="#MWS"><xsl:apply-templates/></text>
     </xsl:template>
@@ -101,7 +111,7 @@
         <div class="#MWS"><xsl:apply-templates/></div>
     </xsl:template>
 
-    无效
+    trail4: no use
     <xsl:template match="tei:div/p/add[@hand ='#MWS']">
         <add class="#MWS"><xsl:apply-templates/></add>
     </xsl:template>
@@ -109,7 +119,7 @@
         <add class="#PBS"><xsl:apply-templates/></add>
     </xsl:template>
     
-    无效
+    trail5: useless 无效
     <xsl:template match="tei:div//tei:p/tei:add[@hand ='#MWS']">
         <span class="#MWS" >
             <xsl:apply-templates/>
@@ -121,7 +131,7 @@
         </span>
     </xsl:template>
     
-    无效:转换为css class
+    trail6: fail 转换为css class
     <xsl:template match="tei:del[@hand = '#MWS']">
         <span class="MWS" >
             <xsl:apply-templates/>
@@ -169,7 +179,7 @@
         </span>
     </xsl:template>
     
-    <!--test
+    <!--test it can upper case, but this can not link with js; where it does not showing properly
     <xsl:template match="tei:add[@hand ='#MWS']">
         <span class="Upper" >
             <xsl:apply-templates/>
